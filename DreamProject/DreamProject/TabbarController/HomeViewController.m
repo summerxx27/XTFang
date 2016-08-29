@@ -29,9 +29,47 @@
 {
     // 设置顶部选择视图
     ALinSelectedView *selectedView = [[ALinSelectedView alloc] initWithFrame:CGRectMake(0, SRN_HEIGHT - 45, SRN_WIDTH, 45)];
-    [selectedView setSelectedBlock:^(HomeType type) {
-        [self.scrollView setContentOffset:CGPointMake(type * ALinScreenWidth, 0) animated:YES];
-    }];
+    selectedView.block = ^(NSInteger tag, UIButton *btn)
+    {
+//        [self.scrollView setContentOffset:CGPointMake(SRN_WIDTH * tag, 0) animated:YES];
+        [self.scrollView setContentOffset:CGPointMake(SRN_WIDTH * (tag - 100), 0)];
+        
+        switch (tag) {
+            case 100:
+            {
+                
+                UIButton *btn1 = (UIButton *)[self.view viewWithTag:101];
+                UIButton *ntb1 = (UIButton *)[self.view viewWithTag:102];
+                
+                btn.titleLabel.font = [UIFont systemFontOfSize:18];
+                btn1.titleLabel.font = [UIFont systemFontOfSize:14];
+                ntb1.titleLabel.font = [UIFont systemFontOfSize:14];
+            }
+                break;
+            case 101:
+            {
+                UIButton *btn1 = (UIButton *)[self.view viewWithTag:100];
+                UIButton *ntb1 = (UIButton *)[self.view viewWithTag:102];
+                
+                btn.titleLabel.font = [UIFont systemFontOfSize:18];
+                btn1.titleLabel.font = [UIFont systemFontOfSize:14];
+                ntb1.titleLabel.font = [UIFont systemFontOfSize:14];
+            }
+                break;
+            case 102:
+            {
+                UIButton *btn1 = (UIButton *)[self.view viewWithTag:100];
+                UIButton *ntb1 = (UIButton *)[self.view viewWithTag:101];
+                
+                btn.titleLabel.font = [UIFont systemFontOfSize:18];
+                btn1.titleLabel.font = [UIFont systemFontOfSize:14];
+                ntb1.titleLabel.font = [UIFont systemFontOfSize:14];
+            }
+            default:
+                break;
+        }
+
+    };
     [self.view addSubview:selectedView];
     _selectedView = selectedView;
 }
@@ -40,15 +78,8 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat page = scrollView.contentOffset.x / ALinScreenWidth;
-    CGFloat offsetX = scrollView.contentOffset.x / ALinScreenWidth * (self.selectedView.width * 0.5 - Home_Seleted_Item_W * 0.5 - 15);
-    self.selectedView.underLine.x = 15 + offsetX;
-    if (page == 1 ) {
-        self.selectedView.underLine.x = offsetX;
-    }else if (page > 1){
-        self.selectedView.underLine.x = offsetX;
-    }
-    self.selectedView.selectedType = (int)(page + 0.5);
+    CGFloat page = scrollView.contentOffset.x / SRN_WIDTH;
+    self.selectedView.underLine.x = SRN_WIDTH / 3 * page;
 }
 
 - (void)viewDidLoad {

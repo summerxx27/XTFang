@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-
+typedef void(^selectedBlock)(NSInteger tag, UIButton *btn);
 
 typedef NS_ENUM(NSUInteger, HomeType) {
     HomeTypeNew, // 最新
@@ -18,9 +18,8 @@ typedef NS_ENUM(NSUInteger, HomeType) {
 
 @interface ALinSelectedView : UIView
 /** 选中了 */
-@property(nonatomic, copy)void (^selectedBlock)(HomeType type);
+@property(nonatomic, copy) selectedBlock block;
 /** 下划线 */
-@property (nonatomic, weak, readonly)UIView *underLine;
-/** 设置滑动选中的按钮 */
-@property(nonatomic, assign) HomeType selectedType;
+@property (nonatomic, weak, readonly) UIView *underLine;
+
 @end

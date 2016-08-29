@@ -28,12 +28,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     // 初始化一个tabbar控制器
-//    HomeViewController *home = [[HomeViewController alloc] init];
-    TabViewController *tabBarVC = [[TabViewController alloc] init];
+    HomeViewController *home = [[HomeViewController alloc] init];
+//    TabViewController *tabBarVC = [[TabViewController alloc] init];
     
     // 使用MMDrawerController
     LeftMenuViewController *leftVC = [[LeftMenuViewController alloc] init];
-    self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:tabBarVC leftDrawerViewController:leftVC];
+    self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:home leftDrawerViewController:leftVC];
     // 展开宽度
     _drawerController.maximumLeftDrawerWidth = SRN_WIDTH * 0.8;
     // 打开手势
