@@ -20,7 +20,7 @@
         [self.contentView addSubview:self.imageIcon];
         [self.contentView addSubview:self.showLabel];
         
-        self.imageIcon.backgroundColor = [UIColor blackColor];
+//        self.imageIcon.backgroundColor = [UIColor blackColor];
         
     }
     return self;

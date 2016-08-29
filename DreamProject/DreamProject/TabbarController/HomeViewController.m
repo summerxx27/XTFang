@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "UIView+SLExtension.h"
-
+#import "XTScrollView.h"
 #import "MainViewController.h"
 #import "BestHotViewController.h"
 #import "CategoryViewController.h"
@@ -31,7 +31,6 @@
     ALinSelectedView *selectedView = [[ALinSelectedView alloc] initWithFrame:CGRectMake(0, SRN_HEIGHT - 45, SRN_WIDTH, 45)];
     selectedView.block = ^(NSInteger tag, UIButton *btn)
     {
-//        [self.scrollView setContentOffset:CGPointMake(SRN_WIDTH * tag, 0) animated:YES];
         [self.scrollView setContentOffset:CGPointMake(SRN_WIDTH * (tag - 100), 0)];
         
         switch (tag) {
@@ -86,7 +85,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIScrollView *view = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SRN_WIDTH, SRN_HEIGHT - HEIGHT)];
+    XTScrollView *view = [[XTScrollView alloc] initWithFrame:CGRectMake(0, 0, SRN_WIDTH, SRN_HEIGHT - HEIGHT)];
     view.contentSize = CGSizeMake(SRN_WIDTH * 3, 0);
     // 去掉滚动条
     view.showsVerticalScrollIndicator = NO;
@@ -106,7 +105,7 @@
     main.view.height = height;
     [self addChildViewController:main];
     [view addSubview:main.view];
-    _mianVC = main;
+    
     
     
     BestHotViewController *hot = [[BestHotViewController alloc] init];
@@ -115,7 +114,7 @@
     hot.view.height = height;
     [self addChildViewController:hot];
     [view addSubview:hot.view];
-    _hotVC = hot;
+    
     
     CategoryViewController *cate = [[CategoryViewController alloc] init];
     cate.view.frame = CGRectMake(0, 0, SRN_WIDTH, SRN_HEIGHT - HEIGHT);
@@ -123,7 +122,7 @@
     cate.view.height = height;
     [self addChildViewController:cate];
     [view addSubview:cate.view];
-    _cateVC = cate;
+    
     
     [self.view addSubview:view];
     self.scrollView = view;

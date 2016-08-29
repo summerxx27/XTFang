@@ -23,18 +23,16 @@
     // Do any additional setup after loading the view.
     
     MainViewController *newVC = [[MainViewController alloc] init];
-//    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:newVC];
-    [self addChildViewController:newVC title:@"最新" image:@"touming"];
+    [self addChildViewController:newVC title:@"最新" image:@"zuixin" selectedImage:@"zuixinselected"];
+    
 
     
     BestHotViewController *hotVC = [[BestHotViewController alloc] init];
-//    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:hotVC];
-    [self addChildViewController:hotVC title:@"最热" image:@"touming"];
+    [self addChildViewController:hotVC title:@"最热" image:@"zuire" selectedImage:@"zuireselected"];
 
     
     CategoryViewController *categoryVC = [[CategoryViewController alloc] init];
-//    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:categoryVC];
-    [self addChildViewController:categoryVC title:@"分类" image:@"touming"];
+    [self addChildViewController:categoryVC title:@"分类" image:@"fenlei" selectedImage:@"fenleiselected"];
 
     
     self.viewControllers = @[newVC, hotVC, categoryVC];
@@ -49,13 +47,14 @@
     }
 
 }
-- (void)addChildViewController:(UIViewController *)childController title: (NSString *)title image:(NSString *)image
+- (void)addChildViewController:(UIViewController *)childController title: (NSString *)title image:(NSString *)image selectedImage:(NSString *)selectdImage
 {
-    childController.tabBarItem.title = title;
-    childController.tabBarItem.image = [UIImage imageNamed:@"touming"];
-    [childController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor colorWithRed:0.0025 green:0.0162 blue:0.0177 alpha:1.0], NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:15.0]} forState:UIControlStateNormal];
-    [childController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor colorWithRed:0.0025 green:0.0162 blue:0.0177 alpha:1.0], NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18.0]} forState:UIControlStateSelected];
-    [childController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -15)];
+    childController.tabBarItem.title = @"";
+    childController.tabBarItem.image = [UIImage imageNamed:image];
+    childController.tabBarItem.selectedImage = [[UIImage imageNamed:selectdImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    [childController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor colorWithRed:0.0025 green:0.0162 blue:0.0177 alpha:1.0], NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:15.0]} forState:UIControlStateNormal];
+//    [childController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor colorWithRed:0.0025 green:0.0162 blue:0.0177 alpha:1.0], NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18.0]} forState:UIControlStateSelected];
+//    [childController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -15)];
 
 }
 - (void)didReceiveMemoryWarning {

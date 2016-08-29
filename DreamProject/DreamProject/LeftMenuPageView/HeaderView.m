@@ -26,9 +26,9 @@
         self.nameLabel = [[UILabel alloc] init];
         self.vipImageView = [[UIImageView alloc] init];
         
-        self.headerView.backgroundColor = [UIColor yellowColor];
-        self.nameLabel.backgroundColor = [UIColor cyanColor];
-        self.vipImageView.backgroundColor = [UIColor greenColor];
+//        self.headerView.backgroundColor = [UIColor yellowColor];
+//        self.nameLabel.backgroundColor = [UIColor cyanColor];
+//        self.vipImageView.backgroundColor = [UIColor greenColor];
         
         [self addSubview:self.headerView];
         [self addSubview:self.nameLabel];
@@ -54,11 +54,17 @@
     [self.vipImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.nameLabel.mas_right).with.offset(10);
         make.top.equalTo(self).with.offset(55);
-        make.width.height.mas_equalTo(@20);
+        make.width.height.mas_equalTo(@33);
     }];
     
-//    self.headerView.image = [UIImage imageNamed:@"chenyao.jpg"];
+    self.headerView.image = [UIImage imageNamed:@"qingning"];
+    
     self.nameLabel.text = @"青柠映像";
+    self.nameLabel.font = [UIFont systemFontOfSize:19];
+    self.nameLabel.textColor = [UIColor whiteColor];
+    self.nameLabel.textAlignment = NSTextAlignmentCenter;
+    
+    self.vipImageView.image = [UIImage imageNamed:@"huiyuandengji"];
     
 }
 

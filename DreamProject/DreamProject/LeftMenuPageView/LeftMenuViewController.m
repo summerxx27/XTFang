@@ -16,6 +16,7 @@
 @interface LeftMenuViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *listArray;
+@property (nonatomic, strong) NSArray *images;
 @end
 
 @implementation LeftMenuViewController
@@ -36,7 +37,8 @@
     // Do any additional setup after loading the view.
     // init array
     self.listArray = @[@"账号设置", @"我的钱包", @"我的收藏", @"会员中心", @"已购项目", @"离线缓存", @"设置中心"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chenyao.jpg"]];
+    self.images = @[@"zhanghao", @"wallet", @"shoucang", @"huiyuan", @"xiangmu", @"lixian", @"shezhi"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.jpg"]];
     [self.view addSubview:self.tableView];
     // HeaderView
     HeaderView *tbHeader = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, SRN_WIDTH, 188)];
@@ -47,7 +49,7 @@
     
     // 关闭按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor = [UIColor yellowColor];
+    [btn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [self.view addSubview:btn];
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         //
@@ -73,6 +75,7 @@
 {
     LeftMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
     cell.showLabel.text = _listArray[indexPath.row];
+    cell.imageIcon.image = [UIImage imageNamed:_images[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
