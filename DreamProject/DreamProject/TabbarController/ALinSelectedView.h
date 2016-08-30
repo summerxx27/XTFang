@@ -1,10 +1,5 @@
 //
-//  ALinSelectedView.h
-//  MiaowShow
-//
-//  Created by ALin on 16/6/14.
 //  Copyright © 2016年 ALin. All rights reserved.
-//  首页导航的顶部选择视图
 
 #import <UIKit/UIKit.h>
 
@@ -17,9 +12,12 @@ typedef NS_ENUM(NSUInteger, HomeType) {
 };
 
 @interface ALinSelectedView : UIView
-/** 选中了 */
+
 @property(nonatomic, copy) selectedBlock block;
-/** 下划线 */
+
 @property (nonatomic, weak, readonly) UIView *underLine;
 
+@property (nonatomic, strong) UIButton *newbtn;
+@property (nonatomic, strong) UIButton *hotbtn;
+@property (nonatomic, strong) UIButton *catebtn;
 @end

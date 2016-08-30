@@ -24,10 +24,33 @@
     }
     return _underLine;
 }
-
+- (UIButton *)newbtn
+{
+    if (!_newbtn) {
+        _newbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    }
+    return _newbtn;
+}
+- (UIButton *)hotbtn
+{
+    if (!_hotbtn) {
+        _hotbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    }
+    return _hotbtn;
+}
+- (UIButton *)catebtn
+{
+    if (!_catebtn) {
+        _catebtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    }
+    return _catebtn;
+}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        [self addSubview:self.newbtn];
+        [self addSubview:self.hotbtn];
+        [self addSubview:self.catebtn];
         [self setup];
     }
     return self;
@@ -35,23 +58,32 @@
 
 - (void)setup
 {
+    _newbtn.frame = CGRectMake(0 + SRN_WIDTH / 3 * 0, 0, SRN_WIDTH / 3, 40);
+    _newbtn.titleLabel.font = [UIFont systemFontOfSize:18];
+    [_newbtn setTitle:@"最新" forState:UIControlStateNormal];
+    [_newbtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.6] forState:UIControlStateNormal];
+    [_newbtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    _newbtn.tag = 100;
+    [_newbtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     
-    NSArray *titles = @[@"最新", @"最热", @"分类"];
     
-    for (int i = 0; i < 3; i ++) {
-        UIButton *newBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        newBtn.frame = CGRectMake(0 + SRN_WIDTH / 3 * i, 0, SRN_WIDTH / 3, 40);
-        newBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [newBtn setTitle:titles[i] forState:UIControlStateNormal];
-        [newBtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.6] forState:UIControlStateNormal];
-        [newBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        newBtn.tag = i + 100;
-        [newBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
-        if (i == 100) {
-            [self click:newBtn];
-        }
-        [self addSubview:newBtn];
-    }
+    _hotbtn.frame = CGRectMake(0 + SRN_WIDTH / 3 * 1, 0, SRN_WIDTH / 3, 40);
+    _hotbtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_hotbtn setTitle:@"最热" forState:UIControlStateNormal];
+    [_hotbtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.6] forState:UIControlStateNormal];
+    [_hotbtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    _hotbtn.tag = 101;
+    [_hotbtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _catebtn.frame = CGRectMake(0 + SRN_WIDTH / 3 * 2, 0, SRN_WIDTH / 3, 40);
+    _catebtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_catebtn setTitle:@"分类" forState:UIControlStateNormal];
+    [_catebtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.6] forState:UIControlStateNormal];
+    [_catebtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    _catebtn.tag = 102;
+    [_catebtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self click:_newbtn];
 }
 #pragma mark - 点击事件
 - (void)click:(UIButton *)btn

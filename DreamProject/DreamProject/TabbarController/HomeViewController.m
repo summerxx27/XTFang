@@ -79,6 +79,23 @@
 {
     CGFloat page = scrollView.contentOffset.x / SRN_WIDTH;
     self.selectedView.underLine.x = SRN_WIDTH / 3 * page;
+    NSLog(@"page === %f", page);
+    
+    if (page == 1) {
+        self.selectedView.newbtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.selectedView.hotbtn.titleLabel.font = [UIFont systemFontOfSize:18];
+        self.selectedView.catebtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    }
+    if (page == 2){
+        self.selectedView.hotbtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.selectedView.newbtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.selectedView.catebtn.titleLabel.font = [UIFont systemFontOfSize:18];
+    }
+    if (page == 0) {
+        self.selectedView.newbtn.titleLabel.font = [UIFont systemFontOfSize:18];
+        self.selectedView.hotbtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.selectedView.catebtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    }
 }
 
 - (void)viewDidLoad {
